@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KALA Web App - Home</title>
+  <link rel="stylesheet" href="stylein.css">
+  <!-- For icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    .navbar {
+      height: 50vh;
+      width: 100px;
+      background-color: #520808;
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
+      position: fixed;
+    }
+    .navbar a {
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      border-bottom: 1px solid #0c0a0a;
+      transition: background-color 0.3s;
+    }s
+    .navbar a:hover {
+      background-color: #186977;
+    }
+    .content {
+      margin-left: 210px;
+      padding: 20px;
+    }
+    .search-input {
+      padding: 8px;
+      width: 300px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>KALA- A Marketplace of Stories.</h1>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for products, Arts and crafts" class="search-input">
+      <i class="fas fa-microphone"></i>
+      <i class="fas fa-map-marker-alt"></i>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="indexxx.html" onclick="navigate('Home')">Home</a>
+    <a href="login.html" onclick="navigate('Login')">Login</a>
+    <a href="signup.html" onclick="navigate('Signup')">Signup</a>
+    <a href="product.html" onclick="navigate('Product')">Product</a>
+    <a href="seller.html" onclick="navigate('Seller')">Seller</a>
+    <a href="order.html" onclick="navigate('Orders')">Orders</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="content">
+    <center>
+      <h2>Welcome to KALA</h2>
+      <h3> Here the suggested posts and AI generated videos regarding the products will be display and all the information is redirected from sellers page</h3>
+        <h3> Moreover from there users can be redirected to sellers account.</h3>
+      </h3>
+    </center>
+
+    <div class="video-grid">
+      <!-- Your video/content grid goes here -->
+    </div>
+
+    <div id="pageContent"></div>
+  </main>
+
+  <!-- Scripts -->
+  <script>
+    function navigate(page) {
+      const content = document.getElementById('pageContent');
+      content.innerHTML = `<h1>${page} Page</h1><p>Content for the ${page} page goes here.</p>`;
+    }
+  </script>
+  <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+/* General Body */
+body {
+  body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f6f9; /* change this to any color you like */
+}
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background-color: #f6eee0; /* soft parchment/ancient paper look */
+  color: #4b2e2e;
+}
+
+/* Header */
+header {
+  background-color: #99490d; /* earthy brown */
+  padding: 15px;
+  text-align: center;
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 2px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+/* Navbar */
+.navbar {
+  height: 100vh;
+  width: 200px;
+  background-color: #5a3e36; /* deep brown */
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  position: fixed;
+}
+
+.navbar a {
+  padding: 15px 20px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #fdf6f0;
+  border-bottom: 1px solid #704d42;
+  transition: background-color 0.3s;
+}
+
+.navbar a:hover {
+  background-color: #a6785a; /* light terracotta on hover */
+}
+
+/* Main Content */
+main {
+  margin-bottom: 220px;
+  padding: 40px;
+  text-align: center;
+}
+
+main h2 {
+  font-size: 2em;
+  margin-left: 10px;
+  color: #5a3e36;
+}
+
+/* AI Videos Section */
+#ai-videos {
+  margin-left: 220px;
+  padding: 20px 40px;
+}
+
+#ai-videos h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #7a4c30;
+}
+
+.video-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.video-grid iframe {
+  border: 5px solid #a6785a;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.video-grid iframe:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
+/* Search Bar */
+.search-input {
+  width: 60%;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: none;
+  margin-right: 10px;
+  outline: none;
+  font-size: 16px;
+}
+
+header i {
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+header i:hover {
+  color: #ffd699; /* warm highlight */
+}

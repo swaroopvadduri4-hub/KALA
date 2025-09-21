@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller Avatar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Upload Avatar</h2>
+  <form id="avatarForm" enctype="multipart/form-data">
+    <input type="file" name="avatar" accept="image/*" required>
+    <button type="submit">Upload</button>
+  </form>
+
+  <h2>My Avatar</h2>
+  <div id="avatarPreview"></div>
+
+  <script>
+    const avatarForm = document.getElementById("avatarForm");
+    const avatarPreview = document.getElementById("avatarPreview");
+
+    // Upload avatar
+    avatarForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(avatarForm);
+      const res = await fetch("/api/sellers/avatar", {
+        method: "POST",
+        body: formData
+      });
+      const data = await res.json();
+      alert(data.message || "Avatar uploaded!");
+      loadAvatar();
+    });
+
+    // Load avatar
+    async function loadAvatar() {
+      const res = await fetch("/api/sellers/me");
+      const seller = await res.json();
+      avatarPreview.innerHTML = "";
+      if (seller.avatar) {
+        const img = document.createElement("img");
+        img.src = seller.avatar;
+        img.width = 150;
+        img.style.borderRadius = "50%";
+        avatarPreview.appendChild(img);
+      }
+    }
+
+    loadAvatar();
+  </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="stylein.css">
+</head>
+<body>
+  <h1>Admin Dashboard</h1>
+  <div id="dashboard"></div>
+  
+
+
+  <script>
+    async function loadDashboard() {
+      const res = await fetch("/sellers");
+      const sellers = await res.json();
+
+      const container = document.getElementById("dashboard");
+      container.innerHTML = "";
+
+      sellers.forEach(seller => {
+        const sellerDiv = document.createElement("div");
+        sellerDiv.classList.add("seller-card");
+
+        sellerDiv.innerHTML = `
+          <img src="${seller.profileImage}" alt="Profile">
+          <h2>${seller.name}</h2>
+          <p><strong>Email:</strong> ${seller.email}</p>
+          <p><strong>About:</strong> ${seller.about}</p>
+          <div class="products">
+            <h3>Products:</h3>
+            ${seller.products.length > 0 ? seller.products.map(p => `
+              <div class="product-card">
+                <strong>${p.name}</strong> - $${p.price}<br>
+                ${p.description}<br>
+                <strong>Buyers:</strong> ${p.buyers}<br>
+                <img src="${p.image}" alt="${p.name}" width="100">
+              </div>
+            `).join('') : '<p>No products yet</p>'}
+          </div>
+        `;
+        container.appendChild(sellerDiv);
+      });
+    }
+
+    loadDashboard();
+  </script>
+  <script>
+  async function loadSeller() {
+    const res = await fetch("/api/sellers");
+    const data = await res.json();
+
+    if (data.length > 0) {
+      const seller = data[data.length - 1]; // get the last seller added
+      document.getElementById("sellerInfo").innerHTML = `
+        <p><strong>Name:</strong> ${seller.name}</p>
+        <p><strong>Email:</strong> ${seller.email}</p>
+        <p><strong>Shop:</strong> ${seller.shop}</p>
+      `;
+    } else {
+      document.getElementById("sellerInfo").innerHTML = `<p>No seller profile found</p>`;
+    }
+  }
+
+  loadSeller();
+</script>
+
+</body>
+</html>
